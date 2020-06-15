@@ -10,7 +10,9 @@ import UIKit
 
 class ViewController: UIViewController {
     
-    var films: [FilmEntry] = []
+//    var films: [FilmEntry] = []
+    var films: [FilmEntryCodable] = []
+
     
     let tableView: UITableView = {
         let table = UITableView()
@@ -21,9 +23,10 @@ class ViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        getDataFromFile("locations")
-        print(films)
+//        getDataFromFile("locations")
+        getDataFromFileUsingCodable("locations")
         setFilmTable()
+        print(films)
     }
     
     func setFilmTable() {
@@ -40,27 +43,45 @@ class ViewController: UIViewController {
         tableView.dataSource = self
     }
     
-    func getDataFromFile(_ fileName: String) {
+//    func getDataFromFile(_ fileName: String) {
+//        let path = Bundle.main.path(forResource: fileName, ofType: ".json")
+//        if let path = path {
+//            let url = URL(fileURLWithPath: path)
+//
+//            let contents = try? Data(contentsOf: url)
+//            do {
+//                if let data = contents,
+//                let jsonResult = try JSONSerialization.jsonObject(with: data, options: .allowFragments) as? [[String:Any]] {
+//                    for film in jsonResult {
+//                        let firstActor = film["actor_1"] as? String ?? ""
+//                        let locations = film["locations"] as? String  ?? ""
+//                        let releaseYear = film["release_year"] as? String  ?? ""
+//                        let title = film["title"] as? String  ?? ""
+//                        let movie = FilmEntry(firstActor: firstActor, locations: locations, releaseYear: releaseYear, title: title)
+//                        films.append(movie)
+//                    }
+//                    tableView.reloadData()
+//                }
+//            } catch {
+//                print("Error deserializing JSON: \(error)")
+//            }
+//        }
+//    }
+    
+    func getDataFromFileUsingCodable(_ fileName:String) {
         let path = Bundle.main.path(forResource: fileName, ofType: ".json")
         if let path = path {
             let url = URL(fileURLWithPath: path)
-            
             let contents = try? Data(contentsOf: url)
-            do {
-                if let data = contents,
-                let jsonResult = try JSONSerialization.jsonObject(with: data, options: .allowFragments) as? [[String:Any]] {
-                    for film in jsonResult {
-                        let firstActor = film["actor_1"] as? String ?? ""
-                        let locations = film["locations"] as? String  ?? ""
-                        let releaseYear = film["release_year"] as? String  ?? ""
-                        let title = film["title"] as? String  ?? ""
-                        let movie = FilmEntry(firstActor: firstActor, locations: locations, releaseYear: releaseYear, title: title)
-                        films.append(movie)
-                    }
+            if let data = contents {
+                let decoder = JSONDecoder()
+                do {
+                    let filmsFromJSON = try decoder.decode([FilmEntryCodable].self, from: data)
+                    films = filmsFromJSON
                     tableView.reloadData()
+                } catch {
+                    print("Parsing Failed")
                 }
-            } catch {
-                print("Error deserializing JSON: \(error)")
             }
         }
     }

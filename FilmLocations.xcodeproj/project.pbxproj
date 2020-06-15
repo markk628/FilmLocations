@@ -15,6 +15,7 @@
 		FE1109BA2497ECAE00CF78A1 /* locations.json in Resources */ = {isa = PBXBuildFile; fileRef = FE1109B92497ECAE00CF78A1 /* locations.json */; };
 		FE1109BC2497F0C900CF78A1 /* FilmEntry.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE1109BB2497F0C900CF78A1 /* FilmEntry.swift */; };
 		FE1109BE2497F92B00CF78A1 /* FilmTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE1109BD2497F92B00CF78A1 /* FilmTableViewCell.swift */; };
+		FE1109C02498053900CF78A1 /* FilmEntryCodable.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE1109BF2498053900CF78A1 /* FilmEntryCodable.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -28,6 +29,7 @@
 		FE1109B92497ECAE00CF78A1 /* locations.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = locations.json; sourceTree = "<group>"; };
 		FE1109BB2497F0C900CF78A1 /* FilmEntry.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FilmEntry.swift; sourceTree = "<group>"; };
 		FE1109BD2497F92B00CF78A1 /* FilmTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FilmTableViewCell.swift; sourceTree = "<group>"; };
+		FE1109BF2498053900CF78A1 /* FilmEntryCodable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FilmEntryCodable.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -65,6 +67,7 @@
 				FE1109A92497EB8E00CF78A1 /* ViewController.swift */,
 				FE1109BD2497F92B00CF78A1 /* FilmTableViewCell.swift */,
 				FE1109BB2497F0C900CF78A1 /* FilmEntry.swift */,
+				FE1109BF2498053900CF78A1 /* FilmEntryCodable.swift */,
 				FE1109AE2497EB9400CF78A1 /* Assets.xcassets */,
 				FE1109B02497EB9400CF78A1 /* LaunchScreen.storyboard */,
 				FE1109B32497EB9400CF78A1 /* Info.plist */,
@@ -145,6 +148,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				FE1109BC2497F0C900CF78A1 /* FilmEntry.swift in Sources */,
+				FE1109C02498053900CF78A1 /* FilmEntryCodable.swift in Sources */,
 				FE1109AA2497EB8E00CF78A1 /* ViewController.swift in Sources */,
 				FE1109A62497EB8E00CF78A1 /* AppDelegate.swift in Sources */,
 				FE1109A82497EB8E00CF78A1 /* SceneDelegate.swift in Sources */,
