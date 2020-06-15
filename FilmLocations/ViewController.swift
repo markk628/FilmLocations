@@ -75,6 +75,7 @@ class ViewController: UIViewController {
             let contents = try? Data(contentsOf: url)
             if let data = contents {
                 let decoder = JSONDecoder()
+                decoder.keyDecodingStrategy = .convertFromSnakeCase
                 do {
                     let filmsFromJSON = try decoder.decode([FilmEntryCodable].self, from: data)
                     films = filmsFromJSON
@@ -100,7 +101,7 @@ extension ViewController: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: FilmTableViewCell.identifier, for: indexPath)
         let film = films[indexPath.row]
-        cell.textLabel?.text = film.locations
+        cell.textLabel?.text = film.locations + " " + film.releaseYear.value
         return cell
     }
     
